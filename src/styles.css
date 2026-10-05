@@ -1,3 +1,20 @@
-body {
-  background-color: rgb(236, 9, 13);
+.errorMessage {
+  display: block;
+  width: 100%;
+  padding: 0;
+  font-size: 80%;
+  color: rgb(228, 38, 38);
+  margin-top: 2px;
+  margin-bottom: 6px;
+  box-sizing: border-box;
+}
+
+input:valid {
+  border: 1px solid green;
+}
+
+input:invalid {
+  border: 1px solid#990000;
+  margin-bottom: 5px;
+  color: black;
 }
