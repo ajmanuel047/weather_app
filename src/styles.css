@@ -19,10 +19,22 @@ input:invalid {
   color: black;
 }
 
+#container {
+  width: 510px;
+  height: 550px;
+  margin: auto;
+  /* background-color: blue; */
+  border-radius: 90px;
+}
+
 #searchBox {
   width: 300px;
   margin: auto;
   text-align: center;
+  position: relative;
+  top: 30px;
+  right: 4px;
+  margin-bottom: 80px;
 }
 
 input {
@@ -42,22 +54,29 @@ input {
   margin-top: 5px;
 }
 
-#weatherInfoDiv {
-  width: 400px;
+#weatherInfoDiv2 {
+  width: 440px;
   height: 300px;
-  background-color: orange;
-  margin: auto;
+  background-color: silver;
   position: relative;
-  right: -7px;
+  top: -300px;
+  left: 36px;
+  border-radius: 20px;
+  opacity: 0.3;
+  /* filter: blur(6px); */
+}
+
+#weatherInfoDiv {
+  width: 440px;
+  height: 300px;
+  margin: auto;
+  z-index: 1;
+  /* background-color: orange; */
+  position: relative;
+  right: -1px;
   /* margin-right: 100px; */
   margin-top: 30px;
   border-radius: 20px;
-}
-
-span {
-  font-size: 0.5rem;
-  position: relative;
-  top: -7px;
 }
 
 #infoDivHeader {
@@ -69,7 +88,7 @@ span {
 }
 
 #iconAndLocation {
- display: flex;
+  display: flex;
 }
 
 #location {
@@ -83,4 +102,41 @@ span {
   border-radius: 10px;
   height: 25px;
   width: 60px;
+}
+
+#infoDivHeader span {
+  position: relative;
+  top: -6px;
+  left: -1px;
+  font-size: 0.6rem;
+}
+
+#temperatureDiv {
+  width: 200px;
+  text-align: center;
+  margin: auto;
+  margin-top: -55px;
+  margin-bottom: -100px;
+}
+
+#temperatureDiv span {
+  font-size: 2rem;
+  position: relative;
+  top: -29px;
+}
+
+#temp {
+  font-size: 4rem;
+}
+
+#weatherNature {
+  position: relative;
+  top: -66px;
+  font-size: 1.1rem;
+}
+
+#weatherReadings {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px;
 }

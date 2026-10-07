@@ -6,41 +6,53 @@
     <title>Document</title>
   </head>
   <body>
-    <div id="searchBox">
-      <h3>Input Your Address Below</h3>
-      <search>
-        <form novalidate>
-          <input
-            type="text"
-            name="userInput"
-            id="userInput"
-            minlength="4"
-            placeholder="Either Country Or State"
-            required
-          />
-          <span class="errorMessage" aria-live="polite"></span>
-          <button id="submit">Search</button>
-        </form>
-      </search>
-    </div>
+    <div id="container">
+      <div id="searchBox">
+        <h3>Input Your Address Below</h3>
+        <search>
+          <form novalidate>
+            <input
+              type="text"
+              name="userInput"
+              id="userInput"
+              minlength="4"
+              placeholder="Either Country Or State"
+              required
+            />
+            <span class="errorMessage" aria-live="polite"></span>
+            <button id="submit">Search</button>
+          </form>
+        </search>
+      </div>
 
-    <div id="weatherInfoDiv">
-      <div id="infoDivHeader">
-        <div id="iconAndLocation">
-          <div id="icon">icon</div>
-          <p id="location">location</p>
+      <div id="weatherInfoDiv">
+        <div id="infoDivHeader">
+          <div id="iconAndLocation">
+            <div id="icon">icon</div>
+            <p id="location">location</p>
+          </div>
+          <button id="toogleButton"><span>o</span>C / <span>o</span>F</button>
         </div>
-        <button id="toogleButton"><span>o</span>C / <span>o</span>F</button>
+        <div id="temperatureDiv">
+          <p id="temp">22<span>o</span>C</p>
+          <p id="weatherNature">Partly Cloudy</p>
+        </div>
+        <div id="weatherReadings">
+          <div id="humidity">
+            <p>Humidity</p>
+            <p>55%</p>
+          </div>
+          <div id="wind">
+            <p>Wind</p>
+            <p>15 km/h</p>
+          </div>
+          <div id="temp2">
+            <p>Feels Like</p>
+            <p>24<span>o</span>C</p>
+          </div>
+        </div>
       </div>
-      <div id="temperatureDiv">
-        <p id="temp"></p>
-        <p id="weatherNature"></p>
-      </div>
-      <div id="weatherNatures">
-        <div id="humidity"></div>
-        <div id="wind"></div>
-        <div id="temp2"></div>
-      </div>
+      <div id="weatherInfoDiv2"></div>
     </div>
   </body>
 </html>
