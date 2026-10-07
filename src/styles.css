@@ -14,7 +14,73 @@ input:valid {
 }
 
 input:invalid {
-  border: 1px solid#990000;
+  /* border: 1px solid#990000; */
   margin-bottom: 5px;
   color: black;
+}
+
+#searchBox {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+input {
+  width: 300px;
+  height: 30px;
+}
+
+::placeholder {
+  position: relative;
+  left: 3px;
+  font-size: 1rem;
+}
+
+#submit {
+  width: 120px;
+  height: 27px;
+  margin-top: 5px;
+}
+
+#weatherInfoDiv {
+  width: 400px;
+  height: 300px;
+  background-color: orange;
+  margin: auto;
+  position: relative;
+  right: -7px;
+  /* margin-right: 100px; */
+  margin-top: 30px;
+  border-radius: 20px;
+}
+
+span {
+  font-size: 0.5rem;
+  position: relative;
+  top: -7px;
+}
+
+#infoDivHeader {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  top: 10px;
+  padding: 15px;
+}
+
+#iconAndLocation {
+ display: flex;
+}
+
+#location {
+  position: relative;
+  top: -16px;
+  left: 15px;
+}
+
+#toogleButton {
+  border: none;
+  border-radius: 10px;
+  height: 25px;
+  width: 60px;
 }
