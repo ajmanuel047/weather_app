@@ -29,7 +29,7 @@ submitLocation.addEventListener("click", (event) => {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
         const getData = await response.json();
-        console.log(getData.currentConditions.temp);
+        console.log(getData);
       } catch (error) {
         console.log(error);
       }
@@ -45,4 +45,22 @@ function displayErrorMessage() {
   } else if (userInput.validity.tooShort) {
     errorMessage.textContent = "Characters Must Be At Least 4";
   }
+}
+
+function convertTemperature(temp) {
+  
+  function toFahrenheit() {
+    let result = (temp * 9) / 5 - 459.67;
+    return Math.round(result);
+  }
+
+  function toCelcius() {
+    let result = temp - 273.15;
+    return Math.round(result);
+  }
+
+  return {
+    toFahrenheit,
+    toCelcius,
+  };
 }
