@@ -39,7 +39,8 @@ submitLocation.addEventListener("click", (event) => {
         let humidity = Math.round(getData.currentConditions.humidity);
         let windSpeed = getData.currentConditions.windspeed
         let temperature = convertTemperature(locationTemperature).toCelsius();
-        // console.log(locationTemperature)
+        const weatherCondition = getData.currentConditions.conditions
+         console.log(weatherCondition)
          console.log(getData)
         let feelslike = convertTemperature(
           getData.currentConditions.feelslike
@@ -51,7 +52,7 @@ submitLocation.addEventListener("click", (event) => {
         displayTempValues(null, null, `${windSpeed}km/h`).displayWindValue();
         displayTempValues(null, null, null, feelslike).displayTempAssume();
         displayTempValues(null, null, null, null, resolvedlocation).displayLocation();
-        displayTempValues().describeWeather();
+        displayTempValues(null, null, null, null, null, weatherCondition).describeWeather();
 
         if (document.querySelector(".fahrenheit")) {
           document.querySelectorAll(".unit").forEach((element) => {
@@ -65,12 +66,7 @@ submitLocation.addEventListener("click", (event) => {
               "skyBlue";
           });
         }
-        userInput.value = "";
-        // const imageTag = document.getElementById('weatherImage')
-        // imageTag.src = sunny
-        // imageTag.style.width = '500px'
-        // imageTag.style.height = '500px'
-        // console.log(imageTag)
+        userInput.value = "";        
         document.getElementById(
           "container"
         ).style.backgroundImage = `url(${rainy})`;
@@ -144,7 +140,7 @@ function convertTemperature(temp) {
   };
 }
 
-function displayTempValues(temperature, humidity, wind, temp2, location) {
+function displayTempValues(temperature, humidity, wind, temp2, location, weatherCondition) {
   function displayTemperature() {
     const temp = document.getElementById("temp");
     temp.textContent = `${temperature}`;
@@ -172,7 +168,7 @@ function displayTempValues(temperature, humidity, wind, temp2, location) {
 
   function describeWeather() {
     const weatherNature = document.getElementById("weatherNature");
-    weatherNature.textContent = "hot as fuck";
+    weatherNature.textContent = `${weatherCondition}`;
   }
 
   return {
