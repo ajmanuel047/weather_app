@@ -91,20 +91,26 @@ input {
   display: flex;
 }
 
+.fa-solid {
+ /* color: white; */
+}
+
 #location {
   position: relative;
   top: -16px;
   left: 15px;
 }
 
-#toogleButton {
+#toggleButton {
   border: none;
   border-radius: 10px;
   height: 25px;
   width: 60px;
+  cursor: pointer;
+  background-color: rgb(198, 217, 233);
 }
 
-#infoDivHeader span {
+#infoDivHeader #degreeIcon {
   position: relative;
   top: -6px;
   left: -1px;
@@ -115,28 +121,55 @@ input {
   width: 200px;
   text-align: center;
   margin: auto;
-  margin-top: -55px;
-  margin-bottom: -100px;
 }
 
-#temperatureDiv span {
+/* #temperatureDiv span {
+  font-size: 2rem;
+  position: relative;
+  top: -29px;
+} */
+#temp {
+display: inline;
+}
+
+#temp, #tempDiv .unit {
+  font-size: 4rem;
+}
+
+#tempDiv .degreeIcon {
   font-size: 2rem;
   position: relative;
   top: -29px;
 }
 
-#temp {
-  font-size: 4rem;
-}
-
 #weatherNature {
   position: relative;
-  top: -66px;
+  top: -19px;
   font-size: 1.1rem;
+  margin-bottom: -40px;
 }
 
 #weatherReadings {
   display: flex;
   justify-content: space-between;
   padding: 50px;
+  line-height: 0.4;
+  margin-top: 15px;
+}
+
+#temp2 {
+  display: inline;
+}
+
+#tempAssume .unit{
+  display: inline;
+  position: relative;
+  left: -4px;
+}
+
+#tempAssume .degreeIcon {
+  position: relative;
+  top: -5px;
+  font-size: 0.8rem;
+  left: -2px;
 }

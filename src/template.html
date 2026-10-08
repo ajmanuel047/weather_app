@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    />
   </head>
   <body>
     <div id="container">
@@ -28,27 +32,36 @@
       <div id="weatherInfoDiv">
         <div id="infoDivHeader">
           <div id="iconAndLocation">
-            <div id="icon">icon</div>
-            <p id="location">location</p>
+            <i class="fa-solid fa-location-dot"></i>
+            <p id="location">Canada</p>
           </div>
-          <button id="toogleButton"><span>o</span>C / <span>o</span>F</button>
+          <button id="toggleButton">
+            <span id="degreeIcon">o</span><span id="celsiusIcon">C</span> /
+            <span id="degreeIcon">o</span><span id="fahrenheitIcon">F</span>
+          </button>
         </div>
         <div id="temperatureDiv">
-          <p id="temp">22<span>o</span>C</p>
+          <div id="tempDiv">
+            <p id="temp">22</p>
+            <span class="degreeIcon">o</span>
+            <span class="unit celsius">C</span>
+          </div>
           <p id="weatherNature">Partly Cloudy</p>
         </div>
         <div id="weatherReadings">
           <div id="humidity">
             <p>Humidity</p>
-            <p>55%</p>
+            <p id="humidityValue">55%</p>
           </div>
           <div id="wind">
             <p>Wind</p>
-            <p>15 km/h</p>
+            <p id="windValue">15 km/h</p>
           </div>
-          <div id="temp2">
+          <div id="tempAssume">
             <p>Feels Like</p>
-            <p>24<span>o</span>C</p>
+            <p id="temp2">24</p>
+            <span class="degreeIcon">o</span>
+            <p class="unit">C</p>
           </div>
         </div>
       </div>
