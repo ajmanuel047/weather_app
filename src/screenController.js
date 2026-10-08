@@ -1,4 +1,6 @@
 import "./styles.css";
+import sunny from "./images/sunny.jpg";
+import rainy from "./images/rainyday.jpg";
 
 const userInput = document.getElementById("userInput");
 const submitLocation = document.querySelector("#submit");
@@ -21,25 +23,34 @@ submitLocation.addEventListener("click", (event) => {
     let location = userInput.value;
     async function getAPI() {
       try {
-        let response = new Promise((resolve, reject) => {
-          setTimeout(() => resolve(200), 3000);
-        });
-        let result = await response;
-        // await fetch(
-        //   `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/?key=3F82C6C2S47VK2KLJKTZE237K`
-        // );
-        // if (!response.ok) {
-        //   throw new Error(`HTTP error! status: ${response.status}`);
-        // }
-        // const getData = await response.json();
-        // console.log(getData.currentConditions.temp);
-        console.log(result);
-        let temperature = convertTemperature(result).toCelsius();
+        // let response = new Promise((resolve, reject) => {
+        //   setTimeout(() => resolve(200), 3000);
+        // });
+        // let result = await response;
+        let response = await fetch(
+          `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/?key=3F82C6C2S47VK2KLJKTZE237K`
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const getData = await response.json();
+        let locationTemperature = getData.currentConditions.temp;
+        let resolvedlocation = getData.resolvedAddress
+        let humidity = Math.round(getData.currentConditions.humidity);
+        let windSpeed = getData.currentConditions.windspeed
+        let temperature = convertTemperature(locationTemperature).toCelsius();
+        // console.log(locationTemperature)
+         console.log(getData)
+        let feelslike = convertTemperature(
+          getData.currentConditions.feelslike
+        ).toCelsius();
+
+        console.log(getData.currentConditions);
         displayTempValues(temperature).displayTemperature();
-        displayTempValues(null, "89").displayHumidityValue();
-        displayTempValues(null, null, "30 km/h").displayWindValue();
-        displayTempValues(null, null, null, "40").displayTempAssume();
-        displayTempValues(null, null, null, null, "Nigeria").displayLocation();
+        displayTempValues(null, humidity).displayHumidityValue();
+        displayTempValues(null, null, `${windSpeed}km/h`).displayWindValue();
+        displayTempValues(null, null, null, feelslike).displayTempAssume();
+        displayTempValues(null, null, null, null, resolvedlocation).displayLocation();
         displayTempValues().describeWeather();
 
         if (document.querySelector(".fahrenheit")) {
@@ -55,6 +66,14 @@ submitLocation.addEventListener("click", (event) => {
           });
         }
         userInput.value = "";
+        // const imageTag = document.getElementById('weatherImage')
+        // imageTag.src = sunny
+        // imageTag.style.width = '500px'
+        // imageTag.style.height = '500px'
+        // console.log(imageTag)
+        document.getElementById(
+          "container"
+        ).style.backgroundImage = `url(${rainy})`;
       } catch (error) {
         console.log(error);
       }
@@ -110,7 +129,7 @@ function convertTemperature(temp) {
   // console.log(temp);
   function toFahrenheit() {
     let result = temp * 1.8 + 32;
-    console.log(result);
+    // console.log(result);
     return Math.round(result);
   }
 

@@ -2,13 +2,19 @@
   display: block;
   width: 100%;
   padding: 0;
-  font-size: 80%;
+  font-size: 15px;
   color: rgb(228, 38, 38);
   margin-top: 2px;
   margin-bottom: 6px;
   box-sizing: border-box;
 }
 
+body {
+  /* background-image: url('images/sunny\ day.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+background-position: center center; */
+}
 input:valid {
   border: 1px solid green;
 }
@@ -23,16 +29,19 @@ input:invalid {
   width: 510px;
   height: 550px;
   margin: auto;
-  /* background-color: blue; */
   border-radius: 90px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 }
+
 
 #searchBox {
   width: 300px;
   margin: auto;
   text-align: center;
   position: relative;
-  top: 30px;
+  top: 50px;
   right: 4px;
   margin-bottom: 80px;
 }
@@ -62,7 +71,7 @@ input {
   top: -300px;
   left: 36px;
   border-radius: 20px;
-  opacity: 0.3;
+  opacity: 0.5;
   /* filter: blur(6px); */
 }
 
@@ -75,7 +84,7 @@ input {
   position: relative;
   right: -1px;
   /* margin-right: 100px; */
-  margin-top: 30px;
+  margin-top: 110px;
   border-radius: 20px;
 }
 
@@ -91,9 +100,9 @@ input {
   display: flex;
 }
 
-.fa-solid {
- /* color: white; */
-}
+/* .fa-solid { */
+/* color: white; */
+/* } */
 
 #location {
   position: relative;
@@ -129,10 +138,11 @@ input {
   top: -29px;
 } */
 #temp {
-display: inline;
+  display: inline;
 }
 
-#temp, #tempDiv .unit {
+#temp,
+#tempDiv .unit {
   font-size: 4rem;
 }
 
@@ -161,7 +171,7 @@ display: inline;
   display: inline;
 }
 
-#tempAssume .unit{
+#tempAssume .unit {
   display: inline;
   position: relative;
   left: -4px;
