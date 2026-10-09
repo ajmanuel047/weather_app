@@ -1,6 +1,31 @@
 import "./styles.css";
-import sunny from "./images/sunny.jpg";
+import clear_day from "./images/sunny.jpg";
 import rainy from "./images/rainyday.jpg";
+import clear_night from "./images/clear_night.jpg";
+import cloudy from "./images/cloudy.jpg";
+import cold from "./images/cold.jpg";
+import fog from "./images/fog.jpg";
+import fog2 from "./images/partly_cloudy_day.jpg";
+import partly_cloudy_day from "./images/partly_cloudy_day2.jpg";
+import partly_cloudy_night from "./images/partly_cloudy_night.jpg";
+import showers_day from "./images/showers_day.jpg";
+import snow from "./images/snow.jpg";
+import thunder_rain from "./images/thunder_rain.jpg";
+import wind from "./images/wind.jpg";
+
+const weatherNatureImages = {
+  "clear-day": clear_day,
+  "clear-night": clear_night,
+  cloudy: cloudy,
+  "partly-cloudy-day": partly_cloudy_day,
+  "partly-cloudy-night": partly_cloudy_night,
+  rain: rainy,
+  snow: snow,
+  fog: fog,
+  wind: wind,
+  "showers-day": showers_day,
+  "thunder-rain": thunder_rain,
+};
 
 const userInput = document.getElementById("userInput");
 const submitLocation = document.querySelector("#submit");
@@ -35,24 +60,43 @@ submitLocation.addEventListener("click", (event) => {
         }
         const getData = await response.json();
         let locationTemperature = getData.currentConditions.temp;
-        let resolvedlocation = getData.resolvedAddress
+        let resolvedlocation = getData.resolvedAddress;
         let humidity = Math.round(getData.currentConditions.humidity);
-        let windSpeed = getData.currentConditions.windspeed
+        let windSpeed = getData.currentConditions.windspeed;
         let temperature = convertTemperature(locationTemperature).toCelsius();
-        const weatherCondition = getData.currentConditions.conditions
-         console.log(weatherCondition)
-         console.log(getData)
+        const weatherCondition = getData.currentConditions.conditions;
+        const dataIcon = getData.currentConditions.icon;
+        let icon = null;
+        for (const weatherIcon in weatherNatureImages) {
+          if (dataIcon == weatherIcon) {
+            icon = weatherNatureImages[weatherIcon];
+            console.log(weatherIcon);
+          }
+        }
+        console.log(icon);
         let feelslike = convertTemperature(
           getData.currentConditions.feelslike
         ).toCelsius();
 
-        console.log(getData.currentConditions);
         displayTempValues(temperature).displayTemperature();
         displayTempValues(null, humidity).displayHumidityValue();
         displayTempValues(null, null, `${windSpeed}km/h`).displayWindValue();
         displayTempValues(null, null, null, feelslike).displayTempAssume();
-        displayTempValues(null, null, null, null, resolvedlocation).displayLocation();
-        displayTempValues(null, null, null, null, null, weatherCondition).describeWeather();
+        displayTempValues(
+          null,
+          null,
+          null,
+          null,
+          resolvedlocation
+        ).displayLocation();
+        displayTempValues(
+          null,
+          null,
+          null,
+          null,
+          null,
+          weatherCondition
+        ).describeWeather();
 
         if (document.querySelector(".fahrenheit")) {
           document.querySelectorAll(".unit").forEach((element) => {
@@ -66,10 +110,10 @@ submitLocation.addEventListener("click", (event) => {
               "skyBlue";
           });
         }
-        userInput.value = "";        
+        userInput.value = "";
         document.getElementById(
           "container"
-        ).style.backgroundImage = `url(${rainy})`;
+        ).style.backgroundImage = `url(${icon})`;
       } catch (error) {
         console.log(error);
       }
@@ -140,7 +184,14 @@ function convertTemperature(temp) {
   };
 }
 
-function displayTempValues(temperature, humidity, wind, temp2, location, weatherCondition) {
+function displayTempValues(
+  temperature,
+  humidity,
+  wind,
+  temp2,
+  location,
+  weatherCondition
+) {
   function displayTemperature() {
     const temp = document.getElementById("temp");
     temp.textContent = `${temperature}`;
