@@ -10,10 +10,7 @@
 }
 
 body {
-  /* background-image: url('images/sunny\ day.jpg');
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center center; */
+ font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 input:valid {
   border: 1px solid green;
@@ -60,7 +57,7 @@ input {
 #submit {
   width: 120px;
   height: 27px;
-  margin-top: 5px;
+  margin-top: 11px;
 }
 
 #weatherInfoDiv2 {
