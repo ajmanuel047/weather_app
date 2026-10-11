@@ -10,7 +10,7 @@
 }
 
 body {
- font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 input:valid {
   border: 1px solid green;
@@ -31,7 +31,6 @@ input:invalid {
   background-repeat: no-repeat;
   background-position: center center;
 }
-
 
 #searchBox {
   width: 300px;
@@ -179,4 +178,25 @@ input {
   top: -5px;
   font-size: 0.8rem;
   left: -2px;
+}
+
+.loader {
+  border: 1px dotted #f3f3f3; /* Light grey */
+  border-bottom: 7px dotted blue;
+  border-top: 7px dotted #3498db; /* Blue */
+  border-right: 7px dotted rgb(25, 53, 25);
+  border-left: 7px dotted pink;
+  border-radius: 50%;
+  width: 5px;
+  height: 5px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

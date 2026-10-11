@@ -29,8 +29,8 @@ const weatherNatureImages = {
 
 const coldWeather = {
   cold,
-  snow
-}
+  snow,
+};
 
 const userInput = document.getElementById("userInput");
 const submitLocation = document.querySelector("#submit");
@@ -51,9 +51,9 @@ submitLocation.addEventListener("click", (event) => {
     event.preventDefault();
   } else {
     let location = userInput.value;
+    addLoadingComponent();
     async function getAPI() {
       try {
-
         let response = await fetch(
           `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/?key=3F82C6C2S47VK2KLJKTZE237K`
         );
@@ -66,34 +66,33 @@ submitLocation.addEventListener("click", (event) => {
         let humidity = Math.round(getData.currentConditions.humidity);
         let windSpeed = getData.currentConditions.windspeed;
         let temperature = convertTemperature(locationTemperature).toCelsius();
-        let weatherCondition = null
+        let weatherCondition = null;
         const dataIcon = getData.currentConditions.icon;
         let icon = null;
-        console.log(temperature)
-        console.log(weatherCondition)
-        if(temperature <= 10){     
-            if(temperature > 0 && temperature <= 10){
-              icon = coldWeather.cold
-              weatherCondition = 'Cold'
-            }else {
-              icon = coldWeather.snow
-              weatherCondition = 'Extremely Cold'
+        console.log(temperature);
+        console.log(weatherCondition);
+        if (temperature <= 10) {
+          if (temperature > 0 && temperature <= 10) {
+            icon = coldWeather.cold;
+            weatherCondition = "Cold";
+          } else {
+            icon = coldWeather.snow;
+            weatherCondition = "Extremely Cold";
 
-              // reykjavik, iceland
-            }
-          
-        }else {
-          console.log('no')
+            // reykjavik, iceland
+          }
+        } else {
+          console.log("no");
           for (const weatherIcon in weatherNatureImages) {
-          if (dataIcon == weatherIcon) {
-            icon = weatherNatureImages[weatherIcon];
-            weatherCondition = getData.currentConditions.conditions;
-            console.log(weatherIcon);
-            console.log(getData)
+            if (dataIcon == weatherIcon) {
+              icon = weatherNatureImages[weatherIcon];
+              weatherCondition = getData.currentConditions.conditions;
+              console.log(weatherIcon);
+              console.log(getData);
+            }
           }
         }
-        }
-        
+
         console.log(icon);
         let feelslike = convertTemperature(
           getData.currentConditions.feelslike
@@ -251,4 +250,20 @@ function displayTempValues(
     displayLocation,
     describeWeather,
   };
+}
+
+function addLoadingComponent() {
+  const createLoaderDiv = document.querySelectorAll(".loader");
+  createLoaderDiv.forEach((element) => {
+    element.classList.add('loader')
+  })
+
+  const waitingMessage = document.createElement("p");
+  waitingMessage.classList.add("waitingMessage");
+  waitingMessage.textContent = "Please Wait";
+
+  const weatherInfoDiv = document.getElementById("weatherInfoDiv");
+  weatherInfoDiv.before(waitingMessage);
+
+
 }
