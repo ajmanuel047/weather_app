@@ -200,3 +200,9 @@ input {
     transform: rotate(360deg);
   }
 }
+
+.waitingMessage {
+  position: absolute;
+  margin-left: 211px;
+  margin-top: -5px;
+}

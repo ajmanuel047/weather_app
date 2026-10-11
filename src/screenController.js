@@ -253,8 +253,10 @@ function displayTempValues(
 }
 
 function addLoadingComponent() {
-  const createLoaderDiv = document.querySelectorAll(".loader");
+  const createLoaderDiv = document.querySelectorAll(".loadingIcon");
+  console.log(createLoaderDiv)
   createLoaderDiv.forEach((element) => {
+    element.textContent = '';
     element.classList.add('loader')
   })
 
