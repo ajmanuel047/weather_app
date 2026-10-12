@@ -39,7 +39,7 @@ input:valid {
 h3 {
   color: white;
   font-weight: normal;
-  background-color: rgb(104, 92, 92);
+  background-color: rgb(58, 52, 52);
   width: 240px;
   margin: auto;
   margin-top: -8px;
@@ -66,7 +66,7 @@ input:invalid {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background-image: url(./images/rainyday.jpg);
+  background-image: url(./images/partly_cloudy_day.jpg);
 }
 
 #searchBox {
@@ -93,19 +93,7 @@ input {
 #submit {
   width: 120px;
   height: 27px;
-  margin-top: 11px;
-}
-
-#weatherInfoDiv2 {
-  width: 440px;
-  height: 300px;
-  background-color: silver;
-  position: relative;
-  top: -300px;
-  left: 36px;
-  border-radius: 20px;
-  opacity: 0.6;
-  /* filter: blur(6px); */
+  margin-top: 20px;
 }
 
 .waitingMessage {
@@ -122,12 +110,24 @@ input {
   height: 300px;
   margin: auto;
   z-index: 1;
-  /* background-color: orange; */
   position: relative;
   right: -1px;
+  top: 30px;
   /* margin-right: 100px; */
-  margin-top: 80px;
+  margin-top: 60px;
   border-radius: 20px;
+}
+
+#weatherInfoDiv2 {
+  width: 440px;
+  height: 300px;
+  background-color: silver;
+  position: relative;
+  top: -280px;
+  left: 36px;
+  border-radius: 20px;
+  opacity: 0.6;
+  /* filter: blur(6px); */
 }
 
 #infoDivHeader {
