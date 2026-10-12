@@ -41,7 +41,6 @@ userInput.addEventListener("input", () => {
     errorMessage.textContent = "";
     // errorMessage.className = "error"
     document.getElementById("weatherInfoDiv").style.marginTop = "22px";
-
   } else {
     displayErrorMessage();
   }
@@ -90,8 +89,8 @@ submitLocation.addEventListener("click", (event) => {
               weatherCondition = getData.currentConditions.conditions;
               // console.log(weatherIcon);
               // console.log(getData);
-              console.log(weatherIcon)
-              console.log(dataIcon)
+              console.log(weatherIcon);
+              console.log(dataIcon);
             }
           }
         }
@@ -139,15 +138,48 @@ submitLocation.addEventListener("click", (event) => {
         document.querySelectorAll(".loader").forEach((element) => {
           element.classList.remove("loader");
         });
+        if (
+          document.getElementById("temperatureDiv").querySelector(".degreeIcon")
+            .style.visibility == "hidden"
+        ) {
+          document
+            .getElementById("temperatureDiv")
+            .querySelector(".degreeIcon").style.visibility = "visible";
+          document
+            .getElementById("temperatureDiv")
+            .querySelector(".unit").style.visibility = "visible";
+          document.getElementById("weatherNature").style.visibility = "visible";
+
+          document.querySelector(".badRequest").remove();
+        }
         document.querySelector(".waitingMessage").remove();
       } catch (error) {
         console.log(error);
 
-        console.log(document.getElementById('temperatureDiv').querySelector('.loader'))
-        document.getElementById('temperatureDiv').querySelector('.loader').classList.remove("loader")
-        document.getElementById('temperatureDiv').querySelector('.degreeIcon').style.visibility = 'hidden'
-        document.getElementById('temperatureDiv').querySelector('.unit').style.visibility = 'hidden'
-            document.getElementById('temp').textContent = 'Bad Request'
+        console.log(
+          document.getElementById("temperatureDiv").querySelector(".degreeIcon")
+        );
+        if (
+          document.getElementById("temperatureDiv").querySelector(".loader")
+        ) {
+          document
+            .getElementById("temperatureDiv")
+            .querySelector(".loader")
+            .classList.remove("loader");
+          document
+            .getElementById("temperatureDiv")
+            .querySelector(".degreeIcon").style.visibility = "hidden";
+          document
+            .getElementById("temperatureDiv")
+            .querySelector(".unit").style.visibility = "hidden";
+          document.getElementById("weatherNature").style.visibility = "hidden";
+          document.querySelector(".waitingMessage").style.visibility = "hidden";
+        }
+
+        const badRequest = document.createElement("span");
+        badRequest.classList.add("badRequest");
+        badRequest.textContent = "BadRequest";
+        document.getElementById("tempDiv").appendChild(badRequest);
       }
       // document.querySelectorAll(".loader").forEach((element) => {
       //   element.classList.remove("loader");
