@@ -60,6 +60,7 @@ submitLocation.addEventListener("click", (event) => {
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
+        
         const getData = await response.json();
         let locationTemperature = getData.currentConditions.temp;
         let resolvedlocation = getData.resolvedAddress;
@@ -69,6 +70,7 @@ submitLocation.addEventListener("click", (event) => {
         let weatherCondition = null;
         const dataIcon = getData.currentConditions.icon;
         let icon = null;
+        console.log(getData)
         // console.log(temperature);
         // console.log(weatherCondition);
         if (temperature <= 10) {
@@ -89,8 +91,8 @@ submitLocation.addEventListener("click", (event) => {
               weatherCondition = getData.currentConditions.conditions;
               // console.log(weatherIcon);
               // console.log(getData);
-              console.log(weatherIcon);
-              console.log(dataIcon);
+              // console.log(weatherIcon);
+              // console.log(dataIcon);
             }
           }
         }
@@ -323,3 +325,4 @@ function addLoadingComponent() {
     weatherInfoDiv.before(waitingMessage);
   }
 }
+
