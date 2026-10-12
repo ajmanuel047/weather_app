@@ -1,11 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-<script defer src="main.js"></script></head>
-<body>
-    
-</body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <script defer src="main.js"></script></head>
+  <body>
+    <div id="container">
+      <div id="searchBox">
+        <h3>Input Your Address Below</h3>
+        <search>
+          <form novalidate>
+            <input
+              type="text"
+              name="userInput"
+              id="userInput"
+              minlength="4"
+              placeholder="Either Country Or State"
+              required
+            />
+            <span class="errorMessage" aria-live="polite"></span>
+            <button id="submit">Search</button>
+          </form>
+        </search>
+      </div>
+
+      <div id="weatherInfoDiv">
+        <div id="infoDivHeader">
+          <div id="iconAndLocation">
+            <i class="fa-solid fa-location-dot"></i>
+            <p id="location" class="loadingIcon">Canada</p>
+          </div>
+          <button id="toggleButton">
+            <span id="degreeIcon">o</span><span id="celsiusIcon">C</span> /
+            <span id="degreeIcon">o</span><span id="fahrenheitIcon">F</span>
+          </button>
+        </div>
+        <div id="temperatureDiv">
+          <div id="tempDiv">
+            <p id="temp" class="loadingIcon">22</p>
+            <span class="degreeIcon">o</span>
+            <span class="unit celsius">C</span>
+          </div>
+          <p id="weatherNature">Partly Cloudy</p>
+        </div>
+        <div id="weatherReadings">
+          <div id="humidity">
+            <p>Humidity</p>
+            <p id="humidityValue" class="loadingIcon">55%</p>
+          </div>
+          <div id="wind">
+            <p>Wind</p>
+            <p id="windValue" class="loadingIcon">15 km/h</p>
+          </div>
+          <div id="tempAssume">
+            <p>Feels Like</p>
+            <p id="temp2" class="loadingIcon">24</p>
+            <span class="degreeIcon">o</span>
+            <p class="unit">C</p>
+          </div>
+        </div>
+      </div>
+      <div id="weatherInfoDiv2"></div>
+    </div>
+  </body>
 </html>
