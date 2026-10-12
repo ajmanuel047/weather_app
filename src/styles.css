@@ -14,9 +14,10 @@
   position: absolute;
   margin-left: -160px;
   margin-top: 37px;
+  font-weight: 400;
 }
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Playfair Display", serif;
   /* background-color:#03223d; */
   overflow: hidden;
   position: absolute;
@@ -136,8 +137,10 @@ input {
 
 #location {
   position: relative;
-  top: -18px;
+  top: -14px;
   left: 5px;
+  font-size: 0.9rem;
+  line-height: 1;
 }
 
 #toggleButton {
@@ -176,6 +179,8 @@ input {
 #temp,
 #tempDiv .unit {
   font-size: 4rem;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
 }
 
 #tempDiv .degreeIcon {
