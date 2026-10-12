@@ -40,6 +40,8 @@ userInput.addEventListener("input", () => {
   if (userInput.validity.valid) {
     errorMessage.textContent = "";
     // errorMessage.className = "error"
+    document.getElementById("weatherInfoDiv").style.marginTop = "22px";
+
   } else {
     displayErrorMessage();
   }
@@ -154,7 +156,6 @@ submitLocation.addEventListener("click", (event) => {
 });
 
 toggleButton.addEventListener("click", () => {
-  document.body.style.backgroundColor = "orange";
   const tempValue = Number(document.getElementById("temp").textContent);
   const tempValue2 = Number(document.getElementById("temp2").textContent);
 
@@ -197,7 +198,7 @@ function displayErrorMessage() {
   } else if (userInput.validity.tooShort) {
     errorMessage.textContent = "Characters Must Be At Least 4";
   }
-  document.getElementById("weatherInfoDiv").style.marginTop = "-5px";
+  document.getElementById("weatherInfoDiv").style.marginTop = "-22px";
 }
 
 function convertTemperature(temp) {
