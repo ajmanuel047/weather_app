@@ -71,6 +71,12 @@ input {
   /* filter: blur(6px); */
 }
 
+.waitingMessage {
+  position: absolute;
+  margin-left: 214px;
+  margin-top: 0px;
+}
+
 #weatherInfoDiv {
   width: 440px;
   height: 300px;
@@ -102,8 +108,8 @@ input {
 
 #location {
   position: relative;
-  top: -16px;
-  left: 15px;
+  top: -18px;
+  left: 5px;
 }
 
 #toggleButton {
@@ -134,7 +140,9 @@ input {
   top: -29px;
 } */
 #temp {
-  display: inline;
+  display: inline-block;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 #temp,
@@ -164,31 +172,34 @@ input {
 }
 
 #temp2 {
-  display: inline;
+  display: inline-block;
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 #tempAssume .unit {
   display: inline;
   position: relative;
-  left: -4px;
+  left: -5px;
+  /* top: -23px; */
 }
 
 #tempAssume .degreeIcon {
   position: relative;
   top: -5px;
   font-size: 0.8rem;
-  left: -2px;
+  left: -3px;
 }
 
 .loader {
   border: 1px dotted #f3f3f3; /* Light grey */
-  border-bottom: 7px dotted blue;
-  border-top: 7px dotted #3498db; /* Blue */
-  border-right: 7px dotted rgb(25, 53, 25);
-  border-left: 7px dotted pink;
+  border-bottom: 3px dotted blue;
+  border-top: 3px dotted #3498db; /* Blue */
+  border-right: 3px dotted rgb(25, 53, 25);
+  border-left: 3px dotted pink;
   border-radius: 50%;
-  width: 5px;
-  height: 5px;
+  width: 12px;
+  height: 12px;
   animation: spin 1s linear infinite;
 }
 
@@ -201,8 +212,11 @@ input {
   }
 }
 
-.waitingMessage {
-  position: absolute;
-  margin-left: 211px;
-  margin-top: -5px;
+#temperatureDiv .loader {
+  border-bottom: 5px dotted blue;
+  border-top: 5px dotted #3498db; /* Blue */
+  border-right: 5px dotted rgb(25, 53, 25);
+  border-left: 5px dotted pink;
+  width: 25px;
+  height: 25px;
 }

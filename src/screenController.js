@@ -51,7 +51,6 @@ submitLocation.addEventListener("click", (event) => {
     event.preventDefault();
   } else {
     let location = userInput.value;
-    addLoadingComponent();
     async function getAPI() {
       try {
         let response = await fetch(
@@ -69,8 +68,8 @@ submitLocation.addEventListener("click", (event) => {
         let weatherCondition = null;
         const dataIcon = getData.currentConditions.icon;
         let icon = null;
-        console.log(temperature);
-        console.log(weatherCondition);
+        // console.log(temperature);
+        // console.log(weatherCondition);
         if (temperature <= 10) {
           if (temperature > 0 && temperature <= 10) {
             icon = coldWeather.cold;
@@ -82,13 +81,13 @@ submitLocation.addEventListener("click", (event) => {
             // reykjavik, iceland
           }
         } else {
-          console.log("no");
+          // console.log("no");
           for (const weatherIcon in weatherNatureImages) {
             if (dataIcon == weatherIcon) {
               icon = weatherNatureImages[weatherIcon];
               weatherCondition = getData.currentConditions.conditions;
-              console.log(weatherIcon);
-              console.log(getData);
+              // console.log(weatherIcon);
+              // console.log(getData);
             }
           }
         }
@@ -134,11 +133,22 @@ submitLocation.addEventListener("click", (event) => {
         document.getElementById(
           "container"
         ).style.backgroundImage = `url(${icon})`;
+        document.querySelectorAll(".loader").forEach((element) => {
+          element.classList.remove("loader");
+        });
+        document.querySelector(".waitingMessage").remove();
       } catch (error) {
         console.log(error);
       }
+      // document.querySelectorAll(".loader").forEach((element) => {
+      //   element.classList.remove("loader");
+      // });
     }
+    addLoadingComponent();
     getAPI();
+    // document.querySelectorAll(".loader").forEach((element) => {
+    //   element.classList.remove("loader");
+    // });
     event.preventDefault();
   }
 });
@@ -149,30 +159,34 @@ toggleButton.addEventListener("click", () => {
   const tempValue2 = Number(document.getElementById("temp2").textContent);
 
   document.querySelectorAll(".unit").forEach((element) => {
-    if (element.textContent == "C") {
-      element.textContent = "F";
-      element.classList.remove("celsius");
-      element.classList.add("fahrenheit");
-      element.classList.add("iconBackgroundColor");
-      document.getElementById("celsiusIcon").style.backgroundColor =
-        "rgb(198, 217, 233)";
-      document.getElementById("fahrenheitIcon").style.backgroundColor =
-        "skyBlue";
-      let temperature = convertTemperature(tempValue).toFahrenheit();
-      let temp2 = convertTemperature(tempValue2).toFahrenheit();
-      displayTempValues(temperature).displayTemperature();
-      displayTempValues(null, null, null, temp2).displayTempAssume();
-    } else {
-      element.textContent = "C";
-      element.classList.remove("fahrenheit");
-      element.classList.add("celsius");
-      document.getElementById("celsiusIcon").style.backgroundColor = "skyBlue";
-      document.getElementById("fahrenheitIcon").style.backgroundColor =
-        "rgb(198, 217, 233)";
-      let temperature = convertTemperature(tempValue).toCelsius();
-      let temp2 = convertTemperature(tempValue2).toCelsius();
-      displayTempValues(temperature).displayTemperature();
-      displayTempValues(null, null, null, temp2).displayTempAssume();
+    if (!document.querySelector(".loader")) {
+      console.log("yes");
+      if (element.textContent == "C") {
+        element.textContent = "F";
+        element.classList.remove("celsius");
+        element.classList.add("fahrenheit");
+        element.classList.add("iconBackgroundColor");
+        document.getElementById("celsiusIcon").style.backgroundColor =
+          "rgb(198, 217, 233)";
+        document.getElementById("fahrenheitIcon").style.backgroundColor =
+          "skyBlue";
+        let temperature = convertTemperature(tempValue).toFahrenheit();
+        let temp2 = convertTemperature(tempValue2).toFahrenheit();
+        displayTempValues(temperature).displayTemperature();
+        displayTempValues(null, null, null, temp2).displayTempAssume();
+      } else {
+        element.textContent = "C";
+        element.classList.remove("fahrenheit");
+        element.classList.add("celsius");
+        document.getElementById("celsiusIcon").style.backgroundColor =
+          "skyBlue";
+        document.getElementById("fahrenheitIcon").style.backgroundColor =
+          "rgb(198, 217, 233)";
+        let temperature = convertTemperature(tempValue).toCelsius();
+        let temp2 = convertTemperature(tempValue2).toCelsius();
+        displayTempValues(temperature).displayTemperature();
+        displayTempValues(null, null, null, temp2).displayTempAssume();
+      }
     }
   });
 });
@@ -183,6 +197,7 @@ function displayErrorMessage() {
   } else if (userInput.validity.tooShort) {
     errorMessage.textContent = "Characters Must Be At Least 4";
   }
+  document.getElementById("weatherInfoDiv").style.marginTop = "-5px";
 }
 
 function convertTemperature(temp) {
@@ -254,18 +269,17 @@ function displayTempValues(
 
 function addLoadingComponent() {
   const createLoaderDiv = document.querySelectorAll(".loadingIcon");
-  console.log(createLoaderDiv)
+  // console.log(createLoaderDiv)
   createLoaderDiv.forEach((element) => {
-    element.textContent = '';
-    element.classList.add('loader')
-  })
+    element.textContent = "";
+    element.classList.add("loader");
+  });
 
-  const waitingMessage = document.createElement("p");
-  waitingMessage.classList.add("waitingMessage");
-  waitingMessage.textContent = "Please Wait";
-
-  const weatherInfoDiv = document.getElementById("weatherInfoDiv");
-  weatherInfoDiv.before(waitingMessage);
-
-
+  if (!document.querySelector(".waitingMessage")) {
+    const waitingMessage = document.createElement("p");
+    waitingMessage.classList.add("waitingMessage");
+    waitingMessage.textContent = "Please Wait";
+    const weatherInfoDiv = document.getElementById("weatherInfoDiv");
+    weatherInfoDiv.before(waitingMessage);
+  }
 }
