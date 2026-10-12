@@ -90,11 +90,12 @@ submitLocation.addEventListener("click", (event) => {
               weatherCondition = getData.currentConditions.conditions;
               // console.log(weatherIcon);
               // console.log(getData);
+              console.log(weatherIcon)
+              console.log(dataIcon)
             }
           }
         }
 
-        console.log(icon);
         let feelslike = convertTemperature(
           getData.currentConditions.feelslike
         ).toCelsius();
@@ -141,6 +142,12 @@ submitLocation.addEventListener("click", (event) => {
         document.querySelector(".waitingMessage").remove();
       } catch (error) {
         console.log(error);
+
+        console.log(document.getElementById('temperatureDiv').querySelector('.loader'))
+        document.getElementById('temperatureDiv').querySelector('.loader').classList.remove("loader")
+        document.getElementById('temperatureDiv').querySelector('.degreeIcon').style.visibility = 'hidden'
+        document.getElementById('temperatureDiv').querySelector('.unit').style.visibility = 'hidden'
+            document.getElementById('temp').textContent = 'Bad Request'
       }
       // document.querySelectorAll(".loader").forEach((element) => {
       //   element.classList.remove("loader");
